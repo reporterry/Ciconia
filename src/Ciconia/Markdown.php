@@ -10,6 +10,7 @@ use Ciconia\Event\EmitterTrait;
 use Ciconia\Renderer\RendererInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Manages options and events
