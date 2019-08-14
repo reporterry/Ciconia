@@ -8,8 +8,8 @@ use Ciconia\Event\EmitterAwareInterface;
 use Ciconia\Event\EmitterInterface;
 use Ciconia\Event\EmitterTrait;
 use Ciconia\Renderer\RendererInterface;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Manages options and events
@@ -123,9 +123,9 @@ class Markdown implements EmitterInterface
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param Options $resolver
      */
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(Options $resolver)
     {
         $resolver->setDefaults(array(
             'tabWidth'       => 4,
@@ -134,12 +134,10 @@ class Markdown implements EmitterInterface
             'pygments'       => false
         ));
 
-        $resolver->setAllowedTypes(array(
-            'tabWidth'       => 'integer',
-            'nestedTagLevel' => 'integer',
-            'strict'         => 'bool',
-            'pygments'       => 'bool'
-        ));
+        $resolver->setAllowedTypes('tabWidth', 'integer');
+        $resolver->setAllowedTypes('nestedTagLevel', 'integer');
+        $resolver->setAllowedTypes('strict', 'bool');
+        $resolver->setAllowedTypes('pygments', 'bool');
     }
 
     /**
